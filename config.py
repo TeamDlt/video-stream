@@ -1,29 +1,87 @@
-import os
-from os import getenv
-from dotenv import load_dotenv
-
-if os.path.exists("local.env"):
-    load_dotenv("local.env")
-
-load_dotenv()
-admins = {}
-SESSION_NAME = getenv("SESSION_NAME", "session")
-BOT_TOKEN = getenv("BOT_TOKEN")
-BOT_NAME = getenv("BOT_NAME", "senorita")
-API_ID = int(getenv("API_ID"))
-API_HASH = getenv("API_HASH")
-OWNER_NAME = getenv("OWNER_NAME", "Herox_xd")
-ALIVE_NAME = getenv("ALIVE_NAME", "Senorita")
-BOT_USERNAME = getenv("BOT_USERNAME", "Miss_senorita_bot")
-ASSISTANT_NAME = getenv("ASSISTANT_NAME", "Miss_Senorita_Assistant")
-GROUP_SUPPORT = getenv("GROUP_SUPPORT", "Friendship_Foreverx")
-UPDATES_CHANNEL = getenv("UPDATES_CHANNEL", "Friendship_Foreverx")
-SUDO_USERS = list(map(int, getenv("SUDO_USERS").split()))
-COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/ ! .").split())
-ALIVE_IMG = getenv("ALIVE_IMG", "https://te.legra.ph/file/8ab017424864b8084fa32.jpg")
-DURATION_LIMIT = int(getenv("DURATION_LIMIT", "60"))
-UPSTREAM_REPO = getenv("UPSTREAM_REPO", "https://github.com/HeroxXd/video-stream")
-IMG_1 = getenv("IMG_1", "https://te.legra.ph/file/fefdc713e20ba0900da4f.jpg")
-IMG_2 = getenv("IMG_2", "https://te.legra.ph/file/065436368bb489cda5181.jpg")
-IMG_3 = getenv("IMG_3", "https://te.legra.ph/file/3a493d503c9fa1d5c22ab.jpg")
-IMG_4 = getenv("IMG_4", "https://te.legra.ph/file/85c29672b53cbc89c2a98.jpg")
+{
+    "name": "Video x Music Stream Bot",
+    "description": "Telegram bot for Streaming Video & Music trought the Telegram Group Video Chat, powered by pytgcalls and pyrogram",
+    "logo": "https://te.legra.ph/file/3ef7cd84541edcda8605b.jpg",
+    "keywords": [
+        "pytgcalls",
+        "telegram bot",
+        "video stream",
+        "pyrogram"
+    ],
+    "website": "https://t.me/friendship_foreverx",
+    "repository": "https://github.com/levina-lab/video-stream",
+    "success_url": "https://t.me/herox_xd",
+    "env": {
+        "API_ID": {
+            "description": "your API_ID from my.telegram.org",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "your API_HASH from my.telegram.org",
+            "required": true
+        },
+        "BOT_TOKEN": {
+            "description": "your bot token from @BotFather",
+            "required": true
+        },
+        "BOT_USERNAME": {
+            "description": "your bot username from @BotFather",
+            "required": true
+        },
+        "BOT_NAME": {
+            "description": "fill with your bot name from @BotFather",
+            "required": true
+        },
+        "ASSISTANT_NAME": {
+            "description": "fill with the assistant username account without @",
+            "required": true
+        },
+        "SESSION_NAME": {
+            "description": "fill with the pyrogram String Session",
+            "required": true
+        },
+        "SUDO_USERS": {
+            "description": "list of user ids to be added to sudo member list, or just fill with your id",
+            "required": true
+        },
+        "GROUP_SUPPORT": {
+            "description": "if you have group, then fill the group username here without @",
+            "required": true,
+            "value": "Friendship_foreverx"
+        },
+        "UPDATES_CHANNEL": {
+            "description": "if you have channel, then fill the channel username here without @",
+            "required": true,
+            "value": "Friendship_foreverx"
+        },
+        "OWNER_NAME": {
+            "description": "fill with your telegram account username without @",
+            "required": true,
+            "value": "herox_xd"
+        },
+        "ALIVE_NAME": {
+            "description": "fill with your telegram account nickname/name",
+            "required": true,
+            "value": "Herox"
+        }
+    },
+    "addons": [],
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        },
+        {
+            "url": "heroku/nodejs"
+        },
+        {
+            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+        }
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    },
+    "stack": "container"
+}
